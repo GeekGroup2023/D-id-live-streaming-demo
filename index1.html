@@ -63,7 +63,48 @@
       color: red;
     }
 
+    .chat-input {
+    display: inline-block;
+    border: 1px solid rgb(192, 191, 189);
+    border-radius: 20px;
+    padding: 16px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    min-height: 50px;
+    max-height: 100px;
+    overflow: auto;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
 
+.chat-footer {
+    opacity: 1;
+    transition: opacity 0.05s ease-in-out 0s;
+    display: flex;
+    padding: 10px 10px 20px;
+    gap: 10px;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 6px;
+}
+
+    #left {
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      border-radius: 0px 20px 20px 0px;
+      float: left;
+    }
+    
+    #right{
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      border-radius: 0px 20px 20px 0px;
+      float: right;
+      margin-top: 40px;
+    }
     /* added css from here */
 
     body *{
@@ -72,7 +113,7 @@
     }
 
     #content{
-     width:820px;
+     width:65%;
      position: relative;
      margin:0 auto; 
     }
@@ -130,23 +171,38 @@
       border-radius: 50%;
       background-color: #fff;
     }
-    #record:disabled {
-    background-color: rgb(241, 242, 246);
-    }
-    #record {
-        border: none;
-        background: url(/assets/record.svg) center center no-repeat rgb(116, 89, 254);
-        width: 39px;
-        height: 39px;
-        border-radius: 100vh;
-    }
+
   </style>
 </head>
 
 <body>
   <!-- adde "id=content" -->
+
+
   <div id="content">
-      
+      <div id="left">
+        <!-- added div#status -->
+      <div id="status">
+        <!-- removed the wrapping <div> tags -->
+        ICE gathering status: <label id="ice-gathering-status-label"></label><br>
+        ICE status: <label id="ice-status-label"></label><br>
+        Peer connection status: <label id="peer-status-label"></label><br>
+        Signaling status: <label id="signaling-status-label"></label><br>
+      </div>
+      </div>
+      <!-- added div#buttons -->
+<div id="right">
+  <div id="buttons">
+    <button id="connect-button" type="button">Connect</button>
+    <br/>
+    <br/>
+    <button id="talk-button" type="button">Start</button>
+    <br/>
+    <br/>
+    <button id="destroy-button" type="button">Clear</button>
+    </div>
+</div>
+
       <!-- added "id=video-wrapper" -->
       <div id="video-wrapper">
         <div>
@@ -155,23 +211,21 @@
       </div>
       <br>
 
-      <!-- added div#buttons -->
-      <div id="buttons">
-      <button id="connect-button" type="button">Connect</button>
-      <button id="talk-button" type="button">Start</button>
-      <button id="destroy-button" type="button">Clear</button>
-      <button id="record" src="/assets/record-421cbf2e.svg" ></button>
-    </div>
+      
+      
   
-    <!-- added div#status -->
-      <div id="status">
-      <!-- removed the wrapping <div> tags -->
-      ICE gathering status: <label id="ice-gathering-status-label"></label><br>
-      ICE status: <label id="ice-status-label"></label><br>
-      Peer connection status: <label id="peer-status-label"></label><br>
-      Signaling status: <label id="signaling-status-label"></label><br>
+    
+    
+    
+    <!-- chat-footer -->
+    <div class="chat-footer">
+      <div class="chat-input"></div>
+      <!-- <input type="text" placeholder="Type your message here..."> -->
+      <button>Send</button>
     </div>
   </div>
+
+
 
   <script type="module" src="./index.js"></script>
 

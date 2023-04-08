@@ -49,7 +49,6 @@ connectButton.onclick = async () => {
     return;
   }
 
-  //return a session description
   const sdpResponse = await fetch(`${DID_API.url}/talks/streams/${streamId}/sdp`,
     {
       method: 'POST',
